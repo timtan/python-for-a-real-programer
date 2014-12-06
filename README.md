@@ -1,1 +1,2 @@
-This is for a elementary programer
+
+BETA Version of the book.
