@@ -12,7 +12,7 @@
 # start - 萬物皆物件
 
 
-Python 時常就是在建立物件，以及對物件做操作。 物件導向的程式碼，想解決的問題，就是希望程式碼可以不要有重複 （Don't Repeat Yourself 法則), 以及為程式碼做足夠的抽象化。
+Python 時常在建立物件，以及對物件做操作。 物件導向的程式碼，想解決的問題，就是希望程式碼可以不要有重複 （Don't Repeat Yourself 法則), 以及為程式碼做足夠的抽象化。
 
 在物件導向程式設計當中，我們會試著讓程式是由一個個彼此之間能夠互動的單元組成。
 
@@ -93,12 +93,24 @@ mute = Button('mute')
 mute.click() # mute is clicked
 ```
 
+
 讓一個物件在產生的時候，就把所需要的外界資源就收集好，會讓程式非常清楚簡單。
 
-\_\_init\__ 是一個特別的函數,
+當我們執行 Button('mute') 來建立 instance 的時候, 會直接呼喚\_\_init\__ 這個特別的函數, 第一個參數永遠會是
+instance, 第二個參數以後，才會是外界傳入的參數。在我們的例子就是 'mute'。
 
 
-如果上面還有霧颯颯，可以再參考[搞笑談軟工](http://teddy-chen-tw.blogspot.tw/2012/01/2object-class-instance.html)這篇文章
+上面的程式碼，可以用下面的圖來概略說明：
+
+![img](oo2.png)
+
+也會有人說，類別是 PowerPoint 的範本，實體是你每一次製作的 ppt 檔案。
+
+如果上面還霧颯颯，可以再參考[搞笑談軟工](http://teddy-chen-tw.blogspot.tw/2012/01/2object-class-instance.html)這篇文章
+
+## 練習
+
+我們來製作一個電視，並且為電視裡面擺放按鈕。
 
 
 ## Reference

@@ -1,7 +1,7 @@
 # 寫程式的工具
 身為 Python 工程師，你在寫程式的過程，你會常常用到下列不同的工具。
 
-* 編輯器: VIM or SublimeText2
+* 編輯器: VIM, SublimeText3
 * IDE: Eclipse + Pydev, PyCharm
 
 

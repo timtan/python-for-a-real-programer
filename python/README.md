@@ -47,3 +47,22 @@ a**0.5
 a = "tim"
 a.upper()
 ```
+
+## list
+```python
+a = ['1','2','3']
+a
+```
+
+
+"tim" 會建立字串物件，[1, 2, 3] 會建立 list 物件，然後讓初始值有三個數字。有一些類別太常使用，以及為了讓程式碼增加可讀性，會讓某些物件的建立方法不一樣跟上一張講的不一樣。 下面列出相等的寫法:
+
+```python
+a = ['1','2','3']
+b = list('123')
+a == b
+```
+
+更多基本的 tutorial, 請先參考[Django Girls Taipei 的文件](http://djangogirlstaipei.herokuapp.com/tutorials/python/)
+
+
