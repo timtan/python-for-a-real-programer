@@ -175,7 +175,7 @@ source venv/bin/activate
 離開 virtualenv, 直接把 terminal 關了也行，virtualenv 只會影響你正在使用的 bash shell
 
 ```bash
-deacivate
+deactivate
 ```
 
 
