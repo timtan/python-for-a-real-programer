@@ -63,6 +63,53 @@ b = list('123')
 a == b
 ```
 
-更多基本的 tutorial, 請先參考[Django Girls Taipei 的文件](http://djangogirlstaipei.herokuapp.com/tutorials/python/)
+更多基本的 tutorial, 請先參考 [Django Girls Taipei 的文件](http://djangogirlstaipei.herokuapp.com/tutorials/python/)
 
 
+## 練習題
+
+### Recursion 的美妙
+```python
+def fib(order):
+    if order < 2:
+        return order
+    else:
+        return fib(order-1) + fib(order-2)
+
+for i in range(10):
+    print fib(i)
+
+#0
+#1
+#1
+#2
+#3
+#5
+#8
+#13
+#21
+#34
+```
+
+請講講看這程式在做什麼？上面化成比較數學的寫法如下：
+
+fib(0) = 0
+fib(1) = 1
+fib(n) = fib(n-1) + fib(n-2)
+
+那有一個組合數學的公式，請你回憶或是推導一下，用類似的方式做出來。
+
+C(n,r) = C(n-1,r-1) + C( n-1, r)
+C(n,n) = 1
+C(n,1) = n
+
+
+這裏的 Ｃ是 Combination, 組合的意思。從 n 個橘子取 r 個橘子出來有幾種組合。
+
+## 算一個數是不是質數
+
+請先從基本定義著手
+
+## 人肉積分
+
+一樣是基本定義
