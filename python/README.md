@@ -102,6 +102,7 @@ for i in range(10):
 * C(n,r) = C(n-1,r-1) + C( n-1, r)
 * C(n,n) = 1
 * C(n,1) = n
+* C(n,r) = 1  if r > n
 
 
 這裏的 Ｃ是 Combination, 組合的意思。從 n 個橘子取 r 個橘子出來有幾種組合。

@@ -248,12 +248,14 @@ except ImportError as e:
     import tkinter as Tkinter
 
 root = Tkinter.Tk()
+
 class ButtonCommand:
     def __init__(self, x,y):
         self.x = x
         self.y = y
     def on_click(self):
         print( "%d %d" % (self.x, self.y))
+
 for row  in range(10):
     for col in range(10):
         button = Tkinter.Button(root, text="B")
@@ -266,29 +268,34 @@ root.mainloop()
 
 2號
 ```python
+
 try:
     import Tkinter
 except ImportError as e:
     import tkinter as Tkinter
 root = Tkinter.Tk()
 
+
 class CB(Tkinter.Button):
+    def __init__(self, master=None, cnf={}, row=0, col=0, **kw):
+        ## Python 2
+        Tkinter.Button.__init__(self, master, cnf, **kw)
+        ## Python 3
+        #super(CB, self).__init__(master, cnf, **kw )
 
-	def __init__(self, master=None, cnf={}, row=0, col=0, **kw):
-		super(CB, self).__init__(master, cnf, **kw )
-		self.__row = row
-		self.__col = col
+        self.__row = row
+        self.__col = col
+        self['command'] = self.print_name
 
-	def print_name(self):
-		print("(%d,%d)"%(self.__row, self.__col))
+    def print_name(self):
+        print("(%d,%d)"%(self.__row, self.__col))
+
 
 for row in range(10):
-	for col in range(10):
-		button = CB(root, row=row, col=col, text="B")
-		button.grid(row=row, column=col)
-		button['command'] = button.print_name
+    for col in range(10):
+        button = CB(root, row=row, col=col, text="B")
+        button.grid(row=row, column=col)
 root.mainloop()
-
 
 ```
 
@@ -339,13 +346,23 @@ print(a) # {(0, 1): 'bomb', (0, 2): 'no bomb'}
 
 客製化一個 Button
 ```python
+try:
+    import Tkinter
+except ImportError as e:
+    import tkinter as Tkinter
+
+
 class BombButton(Tkinter.Button):
     def __init__(self, master=None,  *args,  **kwarg):
-        super(BombButton, self).__init__(master, *args, **kwarg)
+        #python2
+        Tkinter.Button.__init__(self, master, *args, **kwarg)
+        #python3
+        #super(BombButton, self).__init__(master, *args, **kwarg)
         self['text'] = "xxx"
-		  # you do more thing in the futuer
+
 a = BombButton()
 a.grid()
+a.mainloop()
 ```
 在 __init__ 後面，你可以自已做更多的事情.
 
@@ -406,6 +423,7 @@ class Application(Tkinter.Tk):
                     continue
                 if (x+dx,y+dy) in LAYOUT.keys():
                     yield x+dx, y+dy
+                    
     def __init__(self, *args, **kwarg):
 
         super(Application, self).__init__(*args, **kwarg)
