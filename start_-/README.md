@@ -113,6 +113,25 @@ instance, 第二個參數以後，才會是外界傳入的參數。在我們的�
 我們來製作一個電視 class，並且為電視裡面擺放按鈕。
 
 
+```python
+class Button(object):
+    def __init__(self, name):
+        self.name = name
+
+    def click(self):
+        print "{0} is clicked".format(self.name)
+
+
+class TV(object):
+    def __init__(self):
+        self.mute = Button('mute')
+        self.power = Button('power')
+
+tv = TV()
+tv.mute.click()   # mute is clicked
+tv.power.click()  # power is clicked
+```
+
 ## Reference
 
 [Django Girl ](http://djangogirlstaipei.herokuapp.com/tutorials/python/)
