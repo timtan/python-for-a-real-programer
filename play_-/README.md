@@ -37,7 +37,7 @@ import Tkinter
 
 程式碼:
 ```python
-wm = tkinter.Tk()
+wm = Tkinter.Tk()
 ```
 ![主視窗](./tkwm.png "主視窗")
 
@@ -47,14 +47,14 @@ wm.title("踩地雷")
 ```
 ![設定 Title](./tk_settitle.png "設定 Title")
 
-每一個程式都有視窗管理員，這在一般的 tkinter tutorial 沒有強調，因為若是你沒有設定，那就會自動幫你建一個. 所以在寫簡單自用的程式的時候，是用不到的。但若要調整視窗的屬性(e.g.標題)的話，那就需要了。或是需要要一次出現兩個視窗的，那就要分別把兩個不同的視窗管理員建立起來。
+每一個程式都有視窗管理員，這在一般的 Tkinter tutorial 沒有強調，因為若是你沒有設定，那就會自動幫你建一個. 所以在寫簡單自用的程式的時候，是用不到的。但若要調整視窗的屬性(e.g.標題)的話，那就需要了。或是需要要一次出現兩個視窗的，那就要分別把兩個不同的視窗管理員建立起來。
 
 
 ### 一個視窗不夠，你可以建兩個
 程式碼:
 ```python
-wm1 = tkinter.Tk()
-wm2 = tkinter.Tk()
+wm1 = Tkinter.Tk()
+wm2 = Tkinter.Tk()
 wm1.title("視窗1")
 wm2.title("視窗2")
 ```
@@ -67,7 +67,7 @@ wm2.title("視窗2")
 恩，自已寫程式就可以弄一些好玩的東西:
 ![cross](./cross.jpg)
 
-```python
+```python
 wm1.lift()
 wm2.lift()
 ```
@@ -85,8 +85,8 @@ wm1.title?
 ```bash
 In [3]: wm.title?
 Type:        method
-String form: <bound method Tk.wm_title of <tkinter.Tk object at 0x10ce855d0>>
-File:        /usr/local/Cellar/python3/3.3.2/Frameworks/Python.framework/Versions/3.3/lib/python3.3/tkinter/__init__.py
+String form: <bound method Tk.wm_title of <Tkinter.Tk object at 0x10ce855d0>>
+File:        /usr/local/Cellar/python3/3.3.2/Frameworks/Python.framework/Versions/3.3/lib/python3.3/Tkinter/__init__.py
 Definition:  wm.title(self, string=None)
 Docstring:   Set the title of this widget.
 ```
@@ -100,7 +100,7 @@ Docstring:   Set the title of this widget.
 
 程式碼:
 ```python
-b = tkinter.Button(wm1, text='自爆')
+b = Tkinter.Button(wm1, text='自爆')
 b.grid()
 ```
 ![result](./bomb.png)
@@ -137,14 +137,14 @@ b.configure(width=15)
 
 大哉問，這可以找到很多的資料的。但是當你大致知道以後，請不要忘記看文件
 ```python
-tkinter.Button?
+Tkinter.Button?
 ```
 
 ```bash
 Type:            type
-String form:     <class 'tkinter.Button'>
-File:            /usr/local/Cellar/python3/3.3.2/Frameworks/Python.framework/Versions/3.3/lib/python3.3/tkinter/__init__.py
-Init definition: tkinter.Button(self, master=None, cnf={}, **kw)
+String form:     <class 'Tkinter.Button'>
+File:            /usr/local/Cellar/python3/3.3.2/Frameworks/Python.framework/Versions/3.3/lib/python3.3/Tkinter/__init__.py
+Init definition: Tkinter.Button(self, master=None, cnf={}, **kw)
 Docstring:       Button widget.
 Init docstring:
 Construct a button widget with the parent MASTER.
@@ -203,11 +203,11 @@ b['command'] = my_command # b is a button instance
 
 ![grid1](./grid1.png)
 ```python
-import tkinter
-root = tkinter.Tk()
-button1 = tkinter.Button(root, text="(0,0)")
+import Tkinter
+root = Tkinter.Tk()
+button1 = Tkinter.Button(root, text="(0,0)")
 button1.grid(row=0, column=0)
-button2 = tkinter.Button(root, text="(1,1)")
+button2 = Tkinter.Button(root, text="(1,1)")
 button2.grid(row=1, column=1)
 root.mainloop()
 ```
@@ -221,19 +221,19 @@ root.mainloop()
 ![buttons](./buttons.png)
 
 ```python
-import tkinter
-root = tkinter.Tk()
+import Tkinter
+root = Tkinter.Tk()
 for row  in range(10):
     for col in range(10):
-        button = tkinter.Button(root, text="B")
+        button = Tkinter.Button(root, text="B")
         button.grid(row=row, column=col)
 root.mainloop()
 ```
 
 不錯的 Callback
 ```python
-import tkinter
-root = tkinter.Tk()
+import Tkinter
+root = Tkinter.Tk()
 class ButtonCommand:
     def __init__(self, x,y):
         self.x = x
@@ -242,7 +242,7 @@ class ButtonCommand:
         print( "%d %d" % (self.x, self.y))
 for row  in range(10):
     for col in range(10):
-        button = tkinter.Button(root, text="B")
+        button = Tkinter.Button(root, text="B")
         command = ButtonCommand(row, col)
         button['command'] = command.on_click
         button.grid(row=row, column=col)
@@ -252,10 +252,10 @@ root.mainloop()
 
 2號
 ```python
-import tkinter
-root = tkinter.Tk()
+import Tkinter
+root = Tkinter.Tk()
 
-class CB(tkinter.Button):
+class CB(Tkinter.Button):
 
 	def __init__(self, master=None, cnf={}, row=0, col=0, **kw):
 		super(CB, self).__init__(master, cnf, **kw )
@@ -322,7 +322,7 @@ print(a) # {(0, 1): 'bomb', (0, 2): 'no bomb'}
 
 客製化一個 Button
 ```python
-class BombButton(tkinter.Button):
+class BombButton(Tkinter.Button):
     def __init__(self, master=None,  *args,  **kwarg):
         super(BombButton, self).__init__(master, *args, **kwarg)
         self['text'] = "xxx"
@@ -336,9 +336,9 @@ a.grid()
 
 ```python
 try:
-    import tkinter
+    import Tkinter
 except ImportError as e:
-    import Tkinter as tkinter
+    import Tkinter as Tkinter
 
 
 LAYOUT ={
@@ -353,7 +353,7 @@ GAME_NUMBERS = {
     (2, 0): 1, (2, 1): 1, (2, 2): 0,
 }
 
-class BombButton(tkinter.Button):
+class BombButton(Tkinter.Button):
     def __init__(self, master=None, has_bomb=0, bomb_number=0, x=0,y=0,
                  non_bomb_callback=lambda x:x, *args,  **kwarg):
         super(BombButton, self).__init__(master, *args, **kwarg)
@@ -380,7 +380,7 @@ class BombButton(tkinter.Button):
         self['text'] = str(self.bomb_number)
 
 
-class Application(tkinter.Tk):
+class Application(Tkinter.Tk):
     @staticmethod
     def __get_sibling_coordination(x,y):
         for dx in (-1, 0, 1):
