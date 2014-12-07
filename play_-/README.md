@@ -1,9 +1,12 @@
 # 從踩地雷認識 OO
 
-下面的練習，請先 import Tkinter. 之後的例子都不會重覆這一行。
+下面的練習，請先 import Tkinter. 之後的大部份的例子都不會重覆這幾行。
 
 ```python
-import Tkinter
+try:
+    import Tkinter
+except ImportError as e:
+    import tkinter as Tkinter
 ```
 ## 運作環境
 
@@ -75,7 +78,7 @@ wm2.lift()
 
 ### 離題: ipython 的即時讀文件功能
 
-好，剛剛的 title 是上面的文字講的，那如果我們想確定 title 的用法呢? ipython 有一個特異功能，就是在函式的後面加上問號以後，就可以立刻看到文件。
+好，剛剛的 title 是上面的文字講的，那如果我們想確定 title 的用法呢? 不要忘記好用的 ipython 有一個特異功能，就是在函式的後面加上問號以後，就可以立刻看到文件。
 
 程式碼:
 ```python
@@ -100,6 +103,7 @@ Docstring:   Set the title of this widget.
 
 程式碼:
 ```python
+
 b = Tkinter.Button(wm1, text='自爆')
 b.grid()
 ```
@@ -203,7 +207,7 @@ b['command'] = my_command # b is a button instance
 
 ![grid1](./grid1.png)
 ```python
-import Tkinter
+
 root = Tkinter.Tk()
 button1 = Tkinter.Button(root, text="(0,0)")
 button1.grid(row=0, column=0)
@@ -221,7 +225,12 @@ root.mainloop()
 ![buttons](./buttons.png)
 
 ```python
-import Tkinter
+
+try:
+    import Tkinter
+except ImportError as e:
+    import tkinter as Tkinter
+
 root = Tkinter.Tk()
 for row  in range(10):
     for col in range(10):
@@ -232,7 +241,12 @@ root.mainloop()
 
 不錯的 Callback
 ```python
-import Tkinter
+
+try:
+    import Tkinter
+except ImportError as e:
+    import tkinter as Tkinter
+
 root = Tkinter.Tk()
 class ButtonCommand:
     def __init__(self, x,y):
@@ -252,7 +266,10 @@ root.mainloop()
 
 2號
 ```python
-import Tkinter
+try:
+    import Tkinter
+except ImportError as e:
+    import tkinter as Tkinter
 root = Tkinter.Tk()
 
 class CB(Tkinter.Button):
@@ -338,7 +355,7 @@ a.grid()
 try:
     import Tkinter
 except ImportError as e:
-    import Tkinter as Tkinter
+    import tkinter as Tkinter
 
 
 LAYOUT ={
