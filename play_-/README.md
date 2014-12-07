@@ -375,11 +375,13 @@ except ImportError as e:
     import tkinter as Tkinter
 
 
-LAYOUT ={
+LAYOUT = {
     (0, 0): 0, (0, 1): 0, (0, 2): 0,
     (1, 0): 1, (1, 1): 0, (1, 2): 0,
     (2, 0): 0, (2, 1): 0, (2, 2): 0,
 }
+
+TOTAL_SPACES = len(LAYOUT) - sum(LAYOUT.values())
 
 GAME_NUMBERS = {
     (0, 0): 1, (0, 1): 1, (0, 2): 0,
@@ -387,15 +389,17 @@ GAME_NUMBERS = {
     (2, 0): 1, (2, 1): 1, (2, 2): 0,
 }
 
+
 class BombButton(Tkinter.Button):
     def __init__(self, master=None, has_bomb=0, bomb_number=0, x=0,y=0,
-                 non_bomb_callback=lambda x:x, *args,  **kwarg):
-        super(BombButton, self).__init__(master, *args, **kwarg)
+                 handle_open_button=lambda x:x, *args,  **kwarg):
+        Tkinter.Button.__init__(self, master, *args, **kwarg)
+        # super(BombButton, self).__init__(master, *args, **kwarg)
         self['command'] = self.on_click
         self.has_bomb = has_bomb
         self.x = x
         self.y = y
-        self.non_bomb_callback = non_bomb_callback
+        self.handle_open_button = handle_open_button
         self.bomb_number = bomb_number
         self.navigated = False
 
@@ -408,10 +412,8 @@ class BombButton(Tkinter.Button):
             self['text'] = 'X'
             return
 
-        if self.bomb_number == 0:
-            self.non_bomb_callback(self)
-            return
         self['text'] = str(self.bomb_number)
+        self.handle_open_button(self)
 
 
 class Application(Tkinter.Tk):
@@ -423,32 +425,40 @@ class Application(Tkinter.Tk):
                     continue
                 if (x+dx,y+dy) in LAYOUT.keys():
                     yield x+dx, y+dy
-                    
-    def __init__(self, *args, **kwarg):
 
-        super(Application, self).__init__(*args, **kwarg)
+    def __init__(self, spaces, *args, **kwarg):
+        # python2
+        Tkinter.Tk.__init__(self, *args, **kwarg)
+        # python3
+        # super(Application, self).__init__(*args, **kwarg)
         self.buttons = {}
+        self.spaces = spaces
 
-        for row_index,col_index in LAYOUT.keys():
-            has_bomb = LAYOUT[row_index,col_index]
-            bomb_number = GAME_NUMBERS[row_index,col_index]
+        for row_index, col_index in LAYOUT.keys():
+            has_bomb = LAYOUT[row_index, col_index]
+            bomb_number = GAME_NUMBERS[row_index, col_index]
             b = BombButton(self, x=row_index,
                            y=col_index,
                            has_bomb=has_bomb,
                            bomb_number=bomb_number,
-                           non_bomb_callback=self.non_bomb_callback)
-			  b.grid(row=row_index, column=col_index)
-            self.buttons[ row_index, col_index ] = b
+                           handle_open_button=self.handle_open_button)
+            b.grid(row=row_index, column=col_index)
+            self.buttons[row_index, col_index] = b
 
-    def non_bomb_callback(self, button):
-        for sx, sy in Application.__get_sibling_coordination(button.x, button.y):
-            sibling = self.buttons[ sx,sy ]
-            sibling.on_click()
+    def handle_open_button(self, button):
+        self.spaces -= 1
+        if self.spaces == 0:
+            print('success')
+
+        if button.bomb_number == 0:
+            for sx, sy in Application.__get_sibling_coordination(button.x, button.y):
+                sibling = self.buttons[sx, sy]
+                sibling.on_click()
 
 
 
 if __name__ == '__main__':
-    app = Application()
+    app = Application(spaces=TOTAL_SPACES)
     app.mainloop()
 ```
 
