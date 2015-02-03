@@ -7,4 +7,5 @@
 * [Python 挑戰題](python/README.md)
 * [ipython 妙用](ipython/README.md)
 * [Play - 踩地雷](play_-/README.md)
+* [setup.py  醜小鴨見公婆](setuppy/README.md)
 

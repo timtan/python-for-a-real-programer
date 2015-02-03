@@ -122,7 +122,9 @@ Name:	www.google.com.tw
 Address: 74.125.203.94
 ```
 
-回傳值放在一個 list 的子類別。他多了
+回傳值放在一個 list 的子類別。
+
+
 
 ## 練習
 
