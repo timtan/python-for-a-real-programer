@@ -227,11 +227,13 @@ git push -u origin master
 
 sudo pip install git+https://github.com/timtan/setup-py-example
 
-git+  URL  都要自己加上去
+URL  的前方要記得自己加上 git+ 都要自己加上去
 
-上面的原因我忘了
+這代表什麼呢？
 
-你就可以直接裝你自己放在 github 的套件
+代表你可以直接裝你自己放在 github 的套件了。
+
+有些套件若你還沒有心理準備放到官方的 PyPi  Repository, 那你可以先放在 github 上。
 
 
 
