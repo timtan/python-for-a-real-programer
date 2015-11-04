@@ -251,4 +251,19 @@ $ mkvirtualenv --python=/usr/local/bin/python3 env_name
 (等號後面放python3所在的路徑)
 
 
+##requirements.txt
+通常會利用`requirements.txt`紀錄目前環境下使用的python套件，
+以便與他人分享或快速建置相同的作業環境
+
+建置
+
+```bash
+pip freeze > requirements.txt
+```
+
+安裝
+
+```bash
+pip install -r requirements.txt
+```
 
