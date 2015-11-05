@@ -193,10 +193,77 @@ virtualenv 可以完美解決上述的問題。 所以以下的工作流程，�
 
 
 
+##virtualenvwrapper
 
 
+若是覺得virtualenv的指令過於冗長，推薦使用[virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/)，它可以讓你以較短的指令，達到的相同的目的，並提供許多virtualenv沒有的功能。
+
+首先在原始環境下安裝virtualenvwrapper
+
+```bash
+pip install virtualenvwrapper
+```
+
+接著在shell的設定檔(.zshrc, .bashrc)中加入
+
+```bash
+# 建置虛擬環境目錄(相關檔案與虛擬環境目錄會放在.virtualenvs中)
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+```
+
+重新啟動shell後，即可使用virtualenvwrapper的指令
+
+建置虛擬環境
+
+```bash
+mkvirtualenv env_name
+```
+
+刪除虛擬環境
+
+```bash
+rmvirtualenv env_name
+```
+
+列出所有的虛擬環境
+
+```bash
+workon
+```
+
+進入虛擬環境（可用tab補全）
+
+```bash
+workon env_name
+```
 
 
+##建置python3虛擬環境
+
+目前virtualenvwrapper預設的python環境為python2，
+加上`--python`參數，即可以python3為主
+
+```bash
+$ mkvirtualenv --python=/usr/local/bin/python3 env_name
+```
+
+(等號後面放python3所在的路徑)
 
 
+##requirements.txt
+通常會利用`requirements.txt`紀錄目前環境下使用的python套件，
+以便與他人分享或快速建置相同的作業環境
+
+建置
+
+```bash
+pip freeze > requirements.txt
+```
+
+安裝
+
+```bash
+pip install -r requirements.txt
+```
 
